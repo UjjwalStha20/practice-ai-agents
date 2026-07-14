@@ -8,6 +8,8 @@ load_dotenv()
 def get_weather(city):
     
     city_weather = requests.get(f"http://api.weatherstack.com/current?access_key={os.getenv('WEATHER_API_KEY')}&query={city}")
+    if city_weather.status_code != 200:
+        return {"error": "Failed to fetch weather data."}
     return city_weather.json()
 
 def search_hotels(city, budget=None):

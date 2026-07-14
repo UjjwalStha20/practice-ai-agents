@@ -43,7 +43,6 @@ class TravelAgent:
             self.messages.append({"role": "tool", "tool_call_id": tool_call.id, "content": json.dumps(attractions_info)})
 
     def run_agent(self):
-        self.add_system_prompt(SYSTEM_PROMPT)
         while True:
             response = self.client.chat.completions.create(
                 model="qwen2.5:3b",
